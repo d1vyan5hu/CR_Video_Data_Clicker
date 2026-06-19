@@ -1,3 +1,4 @@
+// App.jsx
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./App.css";
@@ -9,14 +10,16 @@ function App() {
   const [annotations, setAnnotations] = useState([]);
   const [pendingAnnotation, setPendingAnnotation] = useState(null);
   const [label, setLabel] = useState("");
-  const [annotationTypes, setAnnotationTypes] =
-    useState([
-      "Person",
-      "Car",
-      "Truck"
-    ]);
-
+ const [annotationTypes, setAnnotationTypes] =
+     useState([
+       "Person",
+       "Car",
+       "Truck"
+     ]);
   const [newType, setNewType] = useState("");
+  const [features, setFeatures] = useState([]);
+  const [featureName, setFeatureName] = useState("");
+  const [isAnnotationMode, setIsAnnotationMode] = useState(false);
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -79,6 +82,10 @@ function App() {
         event.data.type ===
         "VIDEO_CLICK"
       ) {
+
+        if (!isAnnotationMode)
+          return;
+
         setPendingAnnotation({
           x: event.data.x,
           y: event.data.y,
@@ -124,6 +131,63 @@ function App() {
         />
       </div>
 
+      <div className="feature-builder">
+
+        <h2>
+          Annotation Features
+        </h2>
+
+        <div className="feature-input-row">
+
+          <input
+            value={featureName}
+            onChange={(e) =>
+              setFeatureName(
+                e.target.value
+              )
+            }
+            placeholder="Type, Direction, Lane..."
+          />
+
+          <button
+            onClick={() => {
+            
+              if (!featureName.trim())
+                return;
+            
+              setFeatures(prev => [
+                ...prev,
+                featureName
+              ]);
+            
+              setFeatureName("");
+            
+            }}
+          >
+            Add
+          </button>
+          
+        </div>
+          
+        <div className="feature-list">
+          
+          {features.map(
+            (feature, index) => (
+            
+              <div
+                key={index}
+                className="feature-chip"
+              >
+                {feature}
+              </div>
+
+            )
+          )}
+
+        </div>
+        
+      </div>
+
       {videoUrl && (
         <>
         <div className="workspace">
@@ -143,6 +207,69 @@ function App() {
               />
             </div>
           </div>
+
+          <div className="feature-builder">
+
+            <h2>
+              Annotation Features
+            </h2>
+
+            <div className="feature-input-row">
+
+              <input
+                value={featureName}
+                onChange={(e) =>
+                  setFeatureName(e.target.value)
+                }
+                placeholder="Type, Direction, Lane..."
+              />
+
+              <button
+                onClick={() => {
+                
+                  if (!featureName.trim())
+                    return;
+                
+                  setFeatures(prev => [
+                    ...prev,
+                    featureName
+                  ]);
+                
+                  setFeatureName("");
+                
+                }}
+              >
+                Add
+              </button>
+              
+            </div>
+              
+          </div>
+
+          <div className="feature-list">
+
+            {features.map(
+              (feature, index) => (
+              
+                <div
+                  key={index}
+                  className="feature-chip"
+                >
+                  {feature}
+                </div>
+
+              )
+            )}
+
+          </div>
+          <button
+            className="start-btn"
+            onClick={() =>
+              setIsAnnotationMode(true)
+            }
+          >
+            Start Annotation
+          </button>
 
           <div className="right-panel">
             <div className="type-manager">
@@ -185,9 +312,9 @@ function App() {
                 >
                   {type}
                 </div>
-            
+
               ))}
-            
+
             </div>
 
             {pendingAnnotation && (

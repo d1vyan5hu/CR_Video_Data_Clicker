@@ -1,3 +1,4 @@
+/* App.css */
 body {
   margin: 0;
   background: #0f172a;
@@ -129,4 +130,76 @@ video {
   color:white;
   padding:6px 12px;
   border-radius:20px;
+}
+
+.feature-builder{
+  margin-top:20px;
+}
+
+.feature-input-row{
+  display:flex;
+  gap:10px;
+}
+
+.feature-input-row input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+}
+
+.feature-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.feature-chip{
+  background:#2563eb;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+}
+
+.feature-builder{
+  margin-top:20px;
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+}
+
+.feature-input-row{
+  display:flex;
+  gap:10px;
+}
+
+.feature-input-row input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+}
+
+.feature-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.feature-chip{
+  background:#2563eb;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+}
+
+.start-btn{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
+  background:#16a34a;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
 }
