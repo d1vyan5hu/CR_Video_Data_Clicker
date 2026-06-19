@@ -62,12 +62,37 @@ app.get("/player/:filename", (req, res) => {
           width:100%;
           height:100%;
         }
+
+
+        #container{
+          position:relative;
+          width:100%;
+          height:100vh;
+        }
+
+        .marker{
+          
+         position:absolute;
+          
+         width:14px;
+         height:14px;
+          
+         background:red;
+          
+         border-radius:50%;
+          
+         transform:
+           translate(-50%,-50%);
+          
+         pointer-events:none;
+        }
+
       </style>
 
     </head>
 
     <body>
-    
+    <div id="container">
       <video
         id="video"
         controls
@@ -77,11 +102,19 @@ app.get("/player/:filename", (req, res) => {
           type="video/mp4"
         />
       </video>
+      <div class="marker"></div>
+
+      </div>
     
       <script>
     
         const video =
           document.getElementById("video");
+          
+        const container =
+         document.getElementById(
+           "container"
+         );
     
         window.addEventListener(
           "message",
@@ -111,26 +144,42 @@ app.get("/player/:filename", (req, res) => {
           
             const rect =
               video.getBoundingClientRect();
-        
+
             const x =
               event.clientX - rect.left;
-        
+
             const y =
               event.clientY - rect.top;
-        
+
+            const newMarker =
+             document.createElement("div");
+
+            newMarker.className =
+             "marker";
+
+            newMarker.style.left =
+             x + "px";
+
+            newMarker.style.top =
+             y + "px";
+
+            container.appendChild(
+             newMarker
+            );
+
             window.parent.postMessage(
               {
                 type: "VIDEO_CLICK",
-        
+
                 x,
                 y,
-        
+
                 time:
                   video.currentTime,
               },
               "*"
             );
-        
+
           }
         );
 

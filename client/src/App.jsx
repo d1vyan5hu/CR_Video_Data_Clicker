@@ -6,7 +6,7 @@ function App() {
   const iframeRef = useRef(null);
   const [videoUrl, setVideoUrl] = useState("");
   const [currentTime, setCurrentTime] = useState(0);
-  const [clickData, setClickData] = useState(null);
+  const [annotations, setAnnotations] = useState([]);
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -69,11 +69,14 @@ function App() {
         event.data.type ===
         "VIDEO_CLICK"
       ) {
-        setClickData({
+        setAnnotations(prev => [
+          ...prev,
+          {
           x: event.data.x,
           y: event.data.y,
           time: event.data.time,
-        });
+        }
+      ]);
       }
 
       console.log(
@@ -99,7 +102,12 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Video Data Clicker</h1>
+      <h1>🎥 Video Data Clicker</h1>
+
+      <p>
+        Upload videos, annotate events,
+        and collect structured data.
+      </p>
 
       <div className="upload-card">
         <input
@@ -111,52 +119,63 @@ function App() {
 
       {videoUrl && (
         <>
-          <div className="video-container">
-            <iframe
-              ref={iframeRef}
-              title="video-player"
-              src={videoUrl}
-              width="100%"
-              height="600"
-              style={{
-                border: "none",
-                borderRadius: "12px",
-              }}
-            />
-          </div>
-          {clickData && (
-            <div
-              style={{
-                marginTop: "20px",
-                background: "#222",
-                padding: "15px",
-                borderRadius: "10px",
-              }}
-            >
-              <h3>Last Click</h3>
-            
-              <p>
-                Time:
-                {" "}
-                {clickData.time.toFixed(2)}
-              </p>
-            
-              <p>
-                X:
-                {" "}
-                {clickData.x.toFixed(0)}
-              </p>
-            
-              <p>
-                Y:
-                {" "}
-                {clickData.y.toFixed(0)}
-              </p>
-            
+        <div className="workspace">
+          <div className="left-panel">
+
+            <div className="video-container">
+              <iframe
+                ref={iframeRef}
+                title="video-player"
+                src={videoUrl}
+                width="100%"
+                height="600"
+                style={{
+                  border: "none",
+                  borderRadius: "12px",
+                }}
+              />
             </div>
-          )}
+          </div>
+
+          <div className="right-panel">
+              <h2>Annotations</h2>
+                <div className="annotation-count">
+                  Total Annotations:
+                  {annotations.length}
+                </div>
+
+              {annotations.map((item, index) => (
+                <div
+                  key={index}
+                  className="annotation-item"
+                >
+                  <strong>
+                    #{index + 1}
+                  </strong>
+              
+                  <br />
+              
+                  Time:
+                  {" "}
+                  {item.time.toFixed(2)}
+              
+                  <br />
+              
+                  X:
+                  {" "}
+                  {item.x.toFixed(0)}
+              
+                  <br />
+              
+                  Y:
+                  {" "}
+                  {item.y.toFixed(0)}
+                </div>
+              ))}
+          </div>
+        </div>
             
-          <div
+          <div className="controls"
             style={{
               marginTop: "20px",
             }}
