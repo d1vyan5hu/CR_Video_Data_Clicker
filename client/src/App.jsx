@@ -6,6 +6,7 @@ function App() {
   const iframeRef = useRef(null);
   const [videoUrl, setVideoUrl] = useState("");
   const [currentTime, setCurrentTime] = useState(0);
+  const [clickData, setClickData] = useState(null);
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -64,6 +65,22 @@ function App() {
         );
       }
 
+      if (
+        event.data.type ===
+        "VIDEO_CLICK"
+      ) {
+        setClickData({
+          x: event.data.x,
+          y: event.data.y,
+          time: event.data.time,
+        });
+      }
+
+      console.log(
+        "CLICK",
+        event.data
+      );
+
     };
 
     window.addEventListener(
@@ -107,6 +124,37 @@ function App() {
               }}
             />
           </div>
+          {clickData && (
+            <div
+              style={{
+                marginTop: "20px",
+                background: "#222",
+                padding: "15px",
+                borderRadius: "10px",
+              }}
+            >
+              <h3>Last Click</h3>
+            
+              <p>
+                Time:
+                {" "}
+                {clickData.time.toFixed(2)}
+              </p>
+            
+              <p>
+                X:
+                {" "}
+                {clickData.x.toFixed(0)}
+              </p>
+            
+              <p>
+                Y:
+                {" "}
+                {clickData.y.toFixed(0)}
+              </p>
+            
+            </div>
+          )}
             
           <div
             style={{

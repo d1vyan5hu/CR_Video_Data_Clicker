@@ -105,6 +105,35 @@ app.get("/player/:filename", (req, res) => {
           }
         );
 
+        video.addEventListener(
+          "click",
+          (event) => {
+          
+            const rect =
+              video.getBoundingClientRect();
+        
+            const x =
+              event.clientX - rect.left;
+        
+            const y =
+              event.clientY - rect.top;
+        
+            window.parent.postMessage(
+              {
+                type: "VIDEO_CLICK",
+        
+                x,
+                y,
+        
+                time:
+                  video.currentTime,
+              },
+              "*"
+            );
+        
+          }
+        );
+
         setInterval(() => {
 
           window.parent.postMessage(
