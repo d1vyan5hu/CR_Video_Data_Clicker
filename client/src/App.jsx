@@ -7,6 +7,8 @@ function App() {
   const [videoUrl, setVideoUrl] = useState("");
   const [currentTime, setCurrentTime] = useState(0);
   const [annotations, setAnnotations] = useState([]);
+  const [pendingAnnotation, setPendingAnnotation] = useState(null);
+  const [label, setLabel] = useState("");
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -69,14 +71,11 @@ function App() {
         event.data.type ===
         "VIDEO_CLICK"
       ) {
-        setAnnotations(prev => [
-          ...prev,
-          {
+        setPendingAnnotation({
           x: event.data.x,
           y: event.data.y,
           time: event.data.time,
-        }
-      ]);
+        });
       }
 
       console.log(
@@ -138,6 +137,59 @@ function App() {
           </div>
 
           <div className="right-panel">
+            {pendingAnnotation && (
+
+              <div
+                className="annotation-form"
+              >
+              
+                <h3>
+                  New Annotation
+                </h3>
+                        
+                <input
+                  value={label}
+                  onChange={(e) =>
+                    setLabel(
+                      e.target.value
+                    )
+                  }
+                  placeholder="Enter label"
+                />
+            
+                <button
+                  onClick={() => {
+
+                    if (!label.trim()) {
+                      alert("Please enter a label");
+                      return;
+                    }
+                  
+                    setAnnotations(
+                      prev => [
+                        ...prev,
+                      
+                        {
+                          ...pendingAnnotation,
+                          label
+                        }
+                      ]
+                    );
+                  
+                    setPendingAnnotation(
+                      null
+                    );
+                  
+                    setLabel("");
+                  
+                  }}
+                >
+                  Save
+                </button>
+                
+              </div>
+            
+            )}
               <h2>Annotations</h2>
                 <div className="annotation-count">
                   Total Annotations:
@@ -159,6 +211,12 @@ function App() {
                   {" "}
                   {item.time.toFixed(2)}
               
+                  <br />
+              
+                  Label:
+                  {" "}
+                  {item.label}
+
                   <br />
               
                   X:
