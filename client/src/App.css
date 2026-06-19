@@ -96,3 +96,37 @@ video {
 .controls button:hover {
   background: #1d4ed8;
 }
+
+.type-manager{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.type-manager input{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+}
+
+.type-manager button{
+  padding:10px 14px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.type-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.type-chip{
+  background:#2563eb;
+  color:white;
+  padding:6px 12px;
+  border-radius:20px;
+}

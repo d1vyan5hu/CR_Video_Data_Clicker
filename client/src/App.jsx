@@ -9,6 +9,14 @@ function App() {
   const [annotations, setAnnotations] = useState([]);
   const [pendingAnnotation, setPendingAnnotation] = useState(null);
   const [label, setLabel] = useState("");
+  const [annotationTypes, setAnnotationTypes] =
+    useState([
+      "Person",
+      "Car",
+      "Truck"
+    ]);
+
+  const [newType, setNewType] = useState("");
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -137,6 +145,51 @@ function App() {
           </div>
 
           <div className="right-panel">
+            <div className="type-manager">
+
+              <input
+                value={newType}
+                onChange={(e)=>
+                  setNewType(e.target.value)
+                }
+                placeholder="New Type"
+              />
+
+              <button
+                onClick={() => {
+                
+                  if(!newType.trim())
+                    return;
+                
+                  setAnnotationTypes(prev => [
+                    ...prev,
+                    newType
+                  ]);
+                
+                  setNewType("");
+                
+                }}
+              >
+                Add Type
+              </button>
+              
+            </div>
+              
+            <div className="type-list">
+
+              {annotationTypes.map(type => (
+              
+                <div
+                  key={type}
+                  className="type-chip"
+                >
+                  {type}
+                </div>
+            
+              ))}
+            
+            </div>
+
             {pendingAnnotation && (
 
               <div
@@ -147,15 +200,25 @@ function App() {
                   New Annotation
                 </h3>
                         
-                <input
+                <select
                   value={label}
                   onChange={(e) =>
-                    setLabel(
-                      e.target.value
-                    )
+                    setLabel(e.target.value)
                   }
-                  placeholder="Enter label"
-                />
+                >
+                  <option value="">
+                    Select Type
+                  </option>
+                
+                  {annotationTypes.map(type => (
+                    <option
+                      key={type}
+                      value={type}
+                    >
+                      {type}
+                    </option>
+                  ))}
+                </select>
             
                 <button
                   onClick={() => {
