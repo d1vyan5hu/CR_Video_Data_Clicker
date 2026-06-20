@@ -3,6 +3,7 @@ const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
+const db = require("./db/database");
 
 const app = express();
 
@@ -35,6 +36,103 @@ app.post("/upload", upload.single("video"), (req, res) => {
     videoUrl,
   });
 });
+
+app.use(express.json());
+
+app.post(
+  "/annotations",
+  (req, res) => {
+
+    const {
+      timestamp,
+      x,
+      y,
+      fields
+    } = req.body;
+
+    db.run(
+      `
+      INSERT INTO annotations
+      (
+        timestamp,
+        x,
+        y,
+        data
+      )
+      VALUES (?, ?, ?, ?)
+      `,
+      [
+        timestamp,
+        x,
+        y,
+        JSON.stringify(fields)
+      ],
+      function (err) {
+
+        if (err) {
+          return res.status(500)
+            .json({
+              error:
+                err.message
+            });
+        }
+
+        res.json({
+          success: true,
+          id: this.lastID
+        });
+
+      }
+    );
+
+  }
+);
+
+app.get(
+  "/export",
+  (req, res) => {
+
+    db.all(
+      `
+      SELECT *
+      FROM annotations
+      `,
+      [],
+      (err, rows) => {
+
+        if (err) {
+          return res.status(500)
+            .json({
+              error:
+                err.message
+            });
+        }
+
+        const data =
+          rows.map(row => ({
+
+            id: row.id,
+
+            timestamp:
+              row.timestamp,
+
+            x: row.x,
+
+            y: row.y,
+
+            ...JSON.parse(
+              row.data
+            )
+
+          }));
+
+        res.json(data);
+
+      }
+    );
+
+  }
+);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
