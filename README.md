@@ -28,7 +28,7 @@ npm run build
 - **Responsive layout:** works across desktop, tablet, and phone sizes.
 - **CSV/JSON export:** columns are generated from the configured fields.
 
-## JSON configuration
+## JSON configuration example-
 
 ```json
 {
