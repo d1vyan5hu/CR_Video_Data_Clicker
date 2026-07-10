@@ -1,0 +1,25 @@
+.fps-control { gap: 5px; pointer-events: auto; }
+.fps-control label { color: var(--text-dim); }
+.fps-control input {
+  max-width: 106px;
+  padding: 2px 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--ink-raised);
+  color: var(--timecode);
+  font: inherit;
+}
+.fps-control input[aria-invalid="true"] { border-color: #ff6b60; color: #ff9b93; }
+.fps-error {
+  position: absolute;
+  top: 43px;
+  right: 10px;
+  max-width: 230px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 59, 48, .45);
+  border-radius: 5px;
+  background: rgba(10, 11, 13, .92);
+  color: #ff9b93;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}

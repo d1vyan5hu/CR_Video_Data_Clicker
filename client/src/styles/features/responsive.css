@@ -1,0 +1,20 @@
+@media (max-width: 900px) {
+  .app-shell { height: auto; min-height: 100dvh; overflow: visible; }
+  .setup-screen { grid-template-columns: 1fr; }
+  .setup-form-pane { border-right: 0; border-bottom: 1px solid var(--border); }
+  .annotation-screen { height: auto; min-height: calc(100dvh - 56px); grid-template-columns: 1fr; grid-template-rows: minmax(280px, 56vw) 34px auto auto; }
+  .stage, .timeline-strip, .bottom-bar { grid-column: 1; }
+  .stage { grid-row: 1; } .timeline-strip { grid-row: 2; }
+  .sidebar { grid-column: 1; grid-row: 3; max-height: 360px; }
+  .bottom-bar { grid-row: 4; min-height: 64px; padding: 10px; }
+}
+@media (max-width: 560px) {
+  .app-header { padding: 0 12px; } .header-meta { display: none; }
+  .setup-form-pane, .setup-preview-pane { padding: 20px 16px; }
+  .mode-toggle, .choice-grid { grid-template-columns: 1fr; }
+  .video-link-row, .bottom-bar, .bottom-bar-group { flex-wrap: wrap; }
+  .video-link-row .btn { width: 100%; justify-content: center; }
+  .annotation-screen { padding: 8px; gap: 8px; grid-template-rows: minmax(230px, 62vw) 34px auto auto; }
+  .instructions-card { max-width: calc(100% - 20px); padding: 18px; }
+  .timecode-readout { max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; }
+}

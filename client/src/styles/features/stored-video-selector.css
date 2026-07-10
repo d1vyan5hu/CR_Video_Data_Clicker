@@ -1,0 +1,7 @@
+.stored-video-selector { margin-top: 12px; }
+.stored-video-row { display: flex; gap: 8px; }
+.stored-video-row .field-input { min-width: 0; }
+.stored-video-row .btn { flex: 0 0 auto; }
+.stored-video-help, .stored-video-error { margin: 6px 0 0; font-size: 11px; line-height: 1.4; }
+.stored-video-help { color: var(--text-faint); }
+.stored-video-error { color: #ff9b93; }

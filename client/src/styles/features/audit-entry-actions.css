@@ -1,0 +1,4 @@
+.audit-actions { padding: 10px 12px; display: flex; align-items: center; gap: 9px; font-size: 11px; color: var(--text-dim); }
+.entry-row { position: relative; }
+.entry-delete { margin-top: 7px; border: 0; padding: 0; background: transparent; color: #ff9b93; font-size: 11px; cursor: pointer; }
+.entry-delete:hover { color: #ff6b60; text-decoration: underline; }

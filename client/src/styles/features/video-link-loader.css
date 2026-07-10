@@ -1,0 +1,5 @@
+.video-link-loader { margin-top: 10px; }
+.video-link-row { display: flex; gap: 8px; }
+.video-link-row .field-input { min-width: 0; }
+.video-link-row .btn { flex: 0 0 auto; }
+.link-help { margin: 6px 0 0; color: var(--text-faint); font-size: 11px; line-height: 1.4; }
