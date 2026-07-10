@@ -1,6 +1,23 @@
 {
+  "name": "universal-annotator-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon --node-args=--experimental-sqlite index.js",
+    "start": "node --experimental-sqlite index.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
