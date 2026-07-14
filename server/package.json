@@ -5,8 +5,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --node-args=--experimental-sqlite index.js",
-    "start": "node --experimental-sqlite index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "engines": {
     "node": ">=22.5.0"

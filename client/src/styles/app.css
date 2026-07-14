@@ -1,6 +1,6 @@
 /* ---------- Shell & Header ---------- */
 .app-shell {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 56px 1fr;
   overflow: hidden;
