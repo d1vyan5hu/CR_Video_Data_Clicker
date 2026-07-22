@@ -1,0 +1,149 @@
+/* ---- Camera slots inside the (original, config-driven) setup screen ---- */
+.interval-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 14px;
+  background: var(--ink-raised);
+}
+
+.interval-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.interval-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: rgba(139, 122, 255, 0.15);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.camera-slot {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 10px;
+  background: var(--surface);
+}
+
+.camera-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.camera-slot-name {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 2px;
+  flex: 1;
+}
+.camera-slot-name:focus { outline: none; border-bottom-color: var(--accent); }
+
+.camera-slot-header-actions {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.camera-video-name {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: 6px 0 0;
+  font-family: var(--font-mono);
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip-active { border-color: var(--accent); color: var(--accent); background: rgba(139, 122, 255, 0.12); }
+
+.ps-loading { color: var(--text-faint); font-size: 13px; }
+
+.pa-header-select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.btn-danger { color: var(--tally, #ff6b6b); }
+.icon-btn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--surface-strong); }
+.icon-btn-danger:hover { color: var(--tally, #ff6b6b); }
+
+/* ---- Sessions panel (annotation screen sidebar) ---- */
+.sessions-panel {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+}
+
+.sessions-panel-header {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.sessions-empty {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+.session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.session-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--surface);
+}
+.session-card p { margin: 2px 0; }
+.session-card-active { border-color: var(--accent); }
+.session-created { color: var(--text-faint); font-size: 10px; }
+.session-card .btn { margin-top: 6px; width: 100%; }
+

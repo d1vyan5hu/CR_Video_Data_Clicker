@@ -1,0 +1,289 @@
+.project-manager {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 28px 60px;
+}
+
+.pm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.pm-header h1 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-info-dot {
+  color: var(--text-faint);
+  font-size: 14px;
+  cursor: help;
+}
+
+.pm-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+.btn:hover:not(:disabled) { background: var(--surface-strong); border-color: var(--border-strong); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0A0B0D;
+}
+.btn-accent:hover:not(:disabled) { background: #9d8fff; }
+
+.btn-outline { background: transparent; }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--text-dim); }
+.btn-ghost:hover:not(:disabled) { color: var(--text); background: var(--surface); }
+.btn-sm { padding: 6px 10px; font-size: 12px; }
+.btn-danger { color: var(--tally); }
+.btn-danger:hover:not(:disabled) { background: var(--tally-dim); }
+
+.file-btn { position: relative; overflow: hidden; }
+
+.pm-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 16px;
+}
+
+.pm-bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pm-selected-count {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  margin-right: 8px;
+}
+
+.pm-search input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 13px;
+  width: 220px;
+  outline: none;
+}
+.pm-search input:focus { border-color: var(--accent); }
+
+.pm-error {
+  color: var(--tally);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.pm-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink-raised);
+}
+
+.pm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.pm-table thead th {
+  text-align: left;
+  padding: 12px 14px;
+  color: var(--text-faint);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.pm-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.pm-table tbody tr:hover { background: var(--surface); }
+.pm-table tbody tr:last-child td { border-bottom: none; }
+
+.col-check, .col-num { width: 1%; white-space: nowrap; }
+.pm-name { font-weight: 600; min-width: 180px; }
+.pm-desc { color: var(--text-dim); max-width: 260px; }
+
+.pm-empty {
+  text-align: center;
+  padding: 40px !important;
+  color: var(--text-faint);
+}
+
+.pm-actions {
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.icon-btn:hover { background: var(--surface-strong); color: var(--accent); }
+.icon-btn-danger:hover { background: var(--tally-dim); color: var(--tally); }
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent);
+}
+
+/* Modal shared by Create / Edit project */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-card {
+  background: var(--ink-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 460px;
+  max-width: 92vw;
+}
+
+.modal-card h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0 0 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field span {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  outline: none;
+  resize: vertical;
+}
+.field input:focus,
+.field textarea:focus { border-color: var(--accent); }
+
+.bin-duration-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bin-duration-input input { width: 100px; }
+.bin-duration-input .unit { color: var(--text-faint); font-size: 12px; }
+
+.modal-error {
+  color: var(--tally);
+  font-size: 12px;
+  margin: -6px 0 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.project-workspace-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--ink-raised);
+}
+
+.pw-back {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+.pw-back:hover { color: var(--text); background: var(--surface); }
+
+.pw-project-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .project-manager { padding: 20px 14px 40px; }
+  .pm-toolbar { flex-direction: column; align-items: stretch; }
+  .pm-search input { width: 100%; }
+  .pm-table-wrap { overflow-x: auto; }
+}

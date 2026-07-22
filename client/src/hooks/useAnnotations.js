@@ -16,8 +16,20 @@ export function useAnnotations(videoId, configId) {
   }, [refresh]);
 
   const addAnnotation = useCallback(
-    async ({ timestamp, frame, x, y }) => {
-      const row = await createAnnotation({ video_id: videoId, config_id: configId, timestamp, frame, x, y, fields: {} });
+    async ({ timestamp, frame, x, y, interval_id, camera_id, session_id, direction }) => {
+      const row = await createAnnotation({
+        video_id: videoId,
+        config_id: configId,
+        timestamp,
+        frame,
+        x,
+        y,
+        interval_id,
+        camera_id,
+        session_id,
+        direction,
+        fields: {}
+      });
       setAnnotations((prev) => [...prev, row]);
       setActiveId(row.id);
       return row;
