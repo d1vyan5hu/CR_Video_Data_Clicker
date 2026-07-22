@@ -9,6 +9,8 @@ import './styles/features/responsive.css';
 import './styles/features/fps-control.css';
 import './styles/features/stored-video-selector.css';
 import './styles/features/audit-entry-actions.css';
+import './styles/features/project-manager.css';
+import './styles/features/project-workspace.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

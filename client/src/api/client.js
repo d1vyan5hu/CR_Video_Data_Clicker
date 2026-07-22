@@ -29,4 +29,15 @@ export const deleteAnnotation = (id) => api.delete(`/annotations/${id}`).then((r
 // Export
 export const exportUrl = (videoId, format) => `/api/export/${videoId}?format=${format}`;
 
+// Projects
+export const listProjects = () => api.get('/projects').then((r) => r.data);
+export const createProject = (payload) => api.post('/projects', payload).then((r) => r.data);
+export const getProject = (id) => api.get(`/projects/${id}`).then((r) => r.data);
+export const updateProject = (id, payload) => api.patch(`/projects/${id}`, payload).then((r) => r.data);
+export const deleteProject = (id) => api.delete(`/projects/${id}`).then((r) => r.data);
+export const bulkDeleteProjects = (ids) => api.post('/projects/bulk-delete', { ids }).then((r) => r.data);
+export const projectExportUrl = (id, format) => `/api/projects/${id}/export?format=${format}`;
+export const bulkExportProjects = (ids, format) =>
+  api.post('/projects/export', { ids, format }, { responseType: 'blob' }).then((r) => r.data);
+
 export default api;

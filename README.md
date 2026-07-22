@@ -1,6 +1,6 @@
 # Video Annotator
 
-Video Annotator is a responsive, JSON-driven video annotation application. Upload a video or load one from a downloadable share link, then upload a JSON configuration to define exactly which fields are recorded for every annotation.
+Video Annotator is a responsive, JSON-driven video annotation application. Upload a video or load one from a downloadable share link, then upload a JSON configuration to define exactly which fields are recorded for every annotation. The workflow is not traffic-specific.
 
 ## Run locally
 
@@ -46,7 +46,7 @@ npm run build
 }
 ```
 
-`setupFields` is optional. `steps` defines the annotation form. 
+`setupFields` is optional. `steps` defines the annotation form. `directionMarkers` is also optional and is the only way labels are shown over the video. There are no hardcoded N/S/E/W traffic markers; use any labels relevant to the uploaded configuration, or omit this property completely.
 
 ## Project structure
 

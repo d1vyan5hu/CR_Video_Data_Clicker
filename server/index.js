@@ -5,6 +5,9 @@ const videosRouter = require('./routes/videos');
 const configsRouter = require('./routes/configs');
 const annotationsRouter = require('./routes/annotations');
 const exportRouter = require('./routes/export');
+const projectsRouter = require('./routes/projects');
+const { projectIntervalsRouter, standaloneRouter } = require('./routes/intervals');
+const sessionsRouter = require('./routes/sessions');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -21,6 +24,10 @@ app.get('/player/:id', (req, res) => {
   res.redirect(`/api/videos/${req.params.id}/stream`);
 });
 
+app.use('/api/projects/:projectId/intervals', projectIntervalsRouter);
+app.use('/api', standaloneRouter);
+app.use('/api', sessionsRouter);
+app.use('/api/projects', projectsRouter);
 app.use('/api/videos', videosRouter);
 app.use('/api/configs', configsRouter);
 app.use('/api/annotations', annotationsRouter);

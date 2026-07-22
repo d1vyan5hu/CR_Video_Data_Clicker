@@ -10,7 +10,7 @@ function markerPositions(markers = []) {
   }));
 }
 
-export default function VideoPlayer({ videoId, player, started, onStart, onStageClick, recentDots, directions, onDirectionsChange, directionMarkers, videoStartSeconds, entriesCount }) {
+export default function VideoPlayer({ videoId, src, player, started, onStart, onStageClick, recentDots, directions, onDirectionsChange, directionMarkers, videoStartSeconds, entriesCount }) {
   const stageRef = useRef(null);
   const positions = directions || markerPositions(directionMarkers);
 
@@ -55,7 +55,7 @@ export default function VideoPlayer({ videoId, player, started, onStart, onStage
   return (
     <div className="viewfinder" ref={stageRef} onClick={handleStageClick}>
       <span className="bracket-tl" /><span className="bracket-tr" /><span className="bracket-bl" /><span className="bracket-br" />
-      <video ref={player.videoRef} src={videoStreamUrl(videoId)} onTimeUpdate={player.onTimeUpdate} onLoadedMetadata={player.onLoadedMetadata} />
+      <video ref={player.videoRef} src={src || videoStreamUrl(videoId)} onTimeUpdate={player.onTimeUpdate} onLoadedMetadata={player.onLoadedMetadata} />
       <div className="stage-overlay">
         {started && <>
           {Object.entries(positions).map(([key, pos]) => <div key={key} className="direction-tag" style={{ left: `${pos.x}%`, top: `${pos.y}%` }} onMouseDown={startDrag(key)}>{pos.label || key}</div>)}
